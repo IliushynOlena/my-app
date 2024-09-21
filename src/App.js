@@ -5,14 +5,14 @@ import { Home } from './components/Home';
 import { Privacy } from './components/Privacy';
 import {  Routes, Route, Link } from "react-router-dom";
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
+  LoginOutlined,
   InfoCircleOutlined,
   HomeOutlined ,
   FileDoneOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
+import Login from './components/Login';
 const { Header, Sider, Content } = Layout;
 
 function App() {
@@ -56,27 +56,20 @@ function App() {
             
               label: 'Privacy',
             },
+            {
+              key: '4',
+              icon: 
+              <Link to="/login">
+                 {React.createElement(LoginOutlined)}                 
+              </Link>,
+            
+              label: 'Login',
+            },
           ]}
         />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
+
         <Content
           style={{
             margin: '24px 16px',
@@ -90,6 +83,7 @@ function App() {
                 <Route path="/" element={<Home />}/>
                 <Route path="/about" element={<About />} />
                 <Route path="/privacy" element={<Privacy />} />             
+                <Route path="/login" element={<Login />} />             
           
          </Routes>   
         </Content>
